@@ -1,0 +1,116 @@
+﻿@page "/create-member"
+@using RentCarMS__BlazorUI.Data.Models;
+@using RentCarMS__BlazorUI.Services.Members;
+@using RentCarMS__BlazorUI.Pages.Members;
+
+<div class="container mt-4">
+    <div class="row mb-4">
+        <div class="col-lg-9">
+            <h2>Create Member</h2>
+        </div>
+        <div class="col-lg-3 text-right">
+            <a href="/member" role="button" class="btn btn-secondary btn-sm">Back to List</a>
+        </div>
+    </div>
+
+    <EditForm Model="newMember" OnValidSubmit="CreateMemberAsync" class="needs-validation">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+
+        <div class="row">
+            <div class="col-md-6">
+
+                <div class="form-group">
+                    <label for="fastName">First Name:</label>
+                    <InputText id="fastName" class="form-control" @bind-Value="newMember.FastName" required />
+                    <ValidationMessage For="@(() => newMember.FastName)" />
+                </div>
+
+                <div class="form-group">
+                    <label for="lastName">Last Name:</label>
+                    <InputText id="lastName" class="form-control" @bind-Value="newMember.LastName" required />
+                    <ValidationMessage For="@(() => newMember.LastName)" />
+                </div>
+
+                <div class="form-group">
+                    <label for="dOB">Date of Birth:</label>
+                    <InputDate id="dOB" class="form-control" @bind-Value="newMember.DOB" required />
+                    <ValidationMessage For="@(() => newMember.DOB)" />
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <InputText id="email" class="form-control" type="email" @bind-Value="newMember.Email" required />
+                    <ValidationMessage For="@(() => newMember.Email)" />
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone:</label>
+                    <InputText id="phone" class="form-control" type="tel" @bind-Value="newMember.Phone" required />
+                    <ValidationMessage For="@(() => newMember.Phone)" />
+                </div>
+
+                <div class="form-group">
+                    <label for="joinDate">Join Date:</label>
+                    <InputDate id="joinDate" class="form-control" @bind-Value="newMember.JoinDate" required />
+                    <ValidationMessage For="@(() => newMember.JoinDate)" />
+                </div>
+
+                <div class="form-group">
+                    <label for="imagePath">Member Photo:</label>
+                    <InputFile id="imagePath" class="form-control-file" OnChange="HandleFileInputChange" />
+                    @if (!string.IsNullOrEmpty(previewImageUrl))
+                    {
+                        <div class="mt-2">
+                            <img src="@previewImageUrl" alt="Member Image" class="img-thumbnail" style="max-width: 120px; max-height: 120px; object-fit: cover;" />
+                        </div>
+                    }
+                </div>
+
+                <button type="submit" class="btn btn-primary mt-3">Create</button>
+            </div>
+        </div>
+    </EditForm>
+</div>
+
+@code {
+
+    private Member newMember = new Member();
+    [Inject]
+    private NavigationManager NavigationManager { get; set; }
+    [Inject]
+    private IMemberService MemberService { get; set; }
+
+    protected override Task OnInitializedAsync()
+    {
+        newMember.JoinDate = DateTime.Today;
+        return base.OnInitializedAsync();
+    }
+
+    public async Task CreateMemberAsync()
+    {
+        await MemberService.CreateAsynce(newMember);
+        NavigationManager.NavigateTo("/member");
+    }
+
+
+    private string? previewImageUrl;
+
+    private async Task HandleFileInputChange(InputFileChangeEventArgs e)
+    {
+        var imageFile = e.File;
+        if (imageFile != null)
+        {
+            newMember.ImageFile = imageFile;
+
+            // Generate a preview URL
+            using (var stream = imageFile.OpenReadStream())
+            {
+                var buffer = new byte[imageFile.Size];
+                await stream.ReadAsync(buffer);
+                var base64String = Convert.ToBase64String(buffer);
+                previewImageUrl = $"data:{imageFile.ContentType};base64,{base64String}";
+            }
+        }
+    }
+}

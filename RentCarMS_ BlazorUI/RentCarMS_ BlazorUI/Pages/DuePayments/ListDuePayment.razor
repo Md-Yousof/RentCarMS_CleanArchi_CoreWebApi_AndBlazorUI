@@ -1,0 +1,119 @@
+﻿@page "/duepayment"
+@using RentCarMS__BlazorUI.Services.DuePayments;
+@using RentCarMS__BlazorUI.Data.Models;
+@using RentCarMS__BlazorUI.Services.Payments;
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-lg-9">
+            <h3>Due Payment List</h3>
+        </div>
+        <div class="col-lg-3 text-right">
+            <a href="/payment" role="button" class="btn btn-secondary btn-sm">Back to Payments</a>
+        </div>
+    </div>
+
+    <table class="table table-hover table-striped table-bordered mt-3">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Sl:No</th>
+                <th scope="col">Member Info</th>
+                <th scope="col">Car Info</th>
+                <th scope="col">Due Date</th>
+                <th scope="col">Due Installment</th>
+                <th scope="col">Total Due Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (listDuePayment.Any())
+            {
+                @foreach (var (item, index) in listDuePayment.Select((value, index) => (value, index)))
+                {
+                    <tr>
+                        <td>@(index + 1)</td>
+                        <td>@GetMemberInfo(@item.RentCarID)</td>
+                        <td>@GetCarInfo(@item.RentCarDetailID)</td>
+                        <td>@item.DueDate.ToString("dd/MM/yyyy")</td>
+                        <td>@item.DueInstallment</td>
+                        <td>@item.DueAmount.ToString("C")</td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="6" class="text-center">No due payments found.</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+@* <table class="table">
+    <thead>
+        <tr>
+            <th>Sl:No</th>
+            <th>RentCarID</th>
+            <th>RentCarDetailID</th>
+            <th>DueDate</th>
+            <th>DueInstallment</th>
+            <th>TotalDueAmount</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var (item, index) in listDuePayment.Select((value, index) => (value, index)))
+        {
+            <tr>
+                <td>@(index + 1)</td>
+                <td>@GetMemberInfo(@item.RentCarID)</td>
+                <td>@GetCarInfo(@item.RentCarDetailID)</td>
+                <td>@item.DueDate</td>
+                <td>@item.DueInstallment</td>
+                <td>@item.DueAmount</td>
+                <td>
+                </td>
+            </tr>
+        }
+
+    </tbody>
+
+</table> *@
+
+
+@code {
+
+
+    [Inject]
+    private NavigationManager NavigationManager { get; set; }
+    [Inject]
+    public IDuePayment DuePaymentService { get; set; }
+
+    public IEnumerable<DuePayment> listDuePayment { get; set; } = new List<DuePayment>();
+
+    private List<Payment> listPayment { get; set; } = new List<Payment>();
+    [Inject]
+    public IPaymentService PaymentService { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        listDuePayment = (await DuePaymentService.GetAllAsynce()).ToList();
+
+        listPayment = await PaymentService.GetMemberInfoInListPaymentByRentCarId();
+
+    }
+
+    private string GetMemberInfo(int rentCarId)
+    {
+        var memberInfo = listPayment.FirstOrDefault(r => r.RentCarID == rentCarId);
+
+        return memberInfo?.MemberInfo ?? rentCarId.ToString();
+    }
+
+    private string GetCarInfo(int rentCarDetailId)
+    {
+        var memberInfo = listPayment.FirstOrDefault(r => r.RentCarDetailID == rentCarDetailId);
+
+        return memberInfo?.CarInfo ?? rentCarDetailId.ToString();
+    }
+}

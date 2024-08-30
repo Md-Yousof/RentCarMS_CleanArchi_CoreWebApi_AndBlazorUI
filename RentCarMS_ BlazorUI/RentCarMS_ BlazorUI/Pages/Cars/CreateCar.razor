@@ -1,0 +1,68 @@
+﻿@page "/create-care"
+@using RentCarMS__BlazorUI.Data.Models;
+@using RentCarMS__BlazorUI.Services.Cars;
+@using RentCarMS__BlazorUI.Pages.Cars;
+
+@* <h3>Create Car</h3> *@
+
+
+<div class="container mt-4">
+    <div class="row mb-3">
+        <div class="col-lg-9">
+            <h2>Create Car</h2>
+        </div>
+        <div class="col-lg-3 text-right">
+            <a href="/car" role="button" class="btn btn-secondary btn-sm">Back to List</a>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <form @onsubmit="CreateCarAsync">
+                <div class="form-group mb-3">
+                    <label for="licensePlaete">License Plate:</label>
+                    <input type="text" class="form-control" id="licensePlaete" @bind="newCar.LicensePlaete" placeholder="Enter License Plate" required />
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="model">Model:</label>
+                    <input type="text" class="form-control" id="model" @bind="newCar.Model" placeholder="Enter Car Model" required />
+                </div>
+
+                @* Uncomment and modify these fields as needed *@
+                @*
+                <div class="form-group mb-3">
+                <label for="quentity">Quantity:</label>
+                <input type="number" class="form-control" id="quentity" @bind="newCar.Quentity" placeholder="Enter Quantity" />
+                </div>
+
+                <div class="form-group mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="status" @bind="newCar.Status" />
+                <label class="form-check-label" for="status">Active Status</label>
+                </div>
+                *@
+
+                <button type="submit" class="btn btn-primary">Create</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+@code {
+
+    private Car newCar = new Car();
+    [Inject]
+    private NavigationManager NavigationManager { get; set; }
+    [Inject]
+    private ICarService CarService { get; set; }
+
+    public async Task CreateCarAsync()
+    {
+        await CarService.CreateAsynce(newCar);
+        NavigationManager.NavigateTo("/car");
+    }
+
+}

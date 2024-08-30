@@ -1,0 +1,89 @@
+﻿@page "/payment"
+@using RentCarMS__BlazorUI.Services.Payments;
+@using RentCarMS__BlazorUI.Data.Models;
+@using RentCarMS__BlazorUI.Services.RentCars
+@using RentCarMS__BlazorUI.Services.Members
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-lg-9">
+            <h3>Payment List</h3>
+        </div>
+        <div class="col-lg-3 text-right">
+            <button @onclick="CreatePayment" class="btn btn-primary"><i class="fas fa-plus"></i> Create New Payment</button>
+        </div>
+    </div>
+
+    <table class="table table-hover table-striped table-bordered mt-3">
+        <thead class="thead-dark">
+            <tr>
+                <th>Sl:No</th>
+                <th>Member Info</th>
+                <th>Car Info</th>
+                <th>Payment Date</th>
+                <th>Current Installment</th>
+                <th>Advance Installment</th>
+                <th>Total Paid Per Month</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var (item, index) in listPayment.Select((value, index) => (value, index)))
+            {
+                <tr>
+                    <td>@(index + 1)</td>
+                    <td>@GetMemberInfo(item.RentCarID)</td>
+                    <td>@GetCarInfo(item.RentCarDetailID)</td>
+                    <td>@item.PaymentDate?.ToString("dd/MM/yyyy")</td>
+                    <td>@item.NofInstallMent</td>
+                    <td>@item.AdvanceInstallMent</td>
+                    <td>@item.PaidAmmount.ToString("C")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+@code {
+    [Inject]
+    private NavigationManager NavigationManager { get; set; }
+    [Inject]
+    public IPaymentService PaymentService { get; set; }
+
+    public IEnumerable<Payment> listPayment { get; set; } = new List<Payment>();
+
+    [Inject]
+    private IRentCar RentcarService { get; set; }
+    private List<RentCar> memberInfoSelected = new List<RentCar>();
+
+    [Inject]
+    private IMemberService MemberService { get; set; }
+
+
+
+    protected override async Task OnInitializedAsync()
+    {
+       // listPayment = (await PaymentService.GetAllAsync()).ToList();
+
+        listPayment = await PaymentService.GetMemberInfoInListPaymentByRentCarId();
+
+    }
+
+    public void CreatePayment()
+    {
+        NavigationManager.NavigateTo("/create-payment");
+    }
+
+    private string GetMemberInfo(int rentCarId)
+    {
+        var rentCar = listPayment.FirstOrDefault(rc => rc.RentCarID == rentCarId);
+        return rentCar?.MemberInfo ?? rentCarId.ToString();
+    }
+
+    private string GetCarInfo(int detailsId)
+    {
+        var rentCar = listPayment.FirstOrDefault(rc => rc.RentCarDetailID == detailsId);
+        return rentCar?.CarInfo ?? detailsId.ToString();
+    }
+
+}

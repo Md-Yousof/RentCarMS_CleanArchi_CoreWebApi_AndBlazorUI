@@ -1,0 +1,157 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Md_Yousof\\QuardRISON\\RentCarMS_ BlazorUI\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{B1A95940-B4AD-4142-AD62-2E4CE9050161}|RentCarMS_ BlazorUI\\RentCarMS_ BlazorUI.csproj|d:\\md_yousof\\quardrison\\rentcarms_ blazorui\\rentcarms_ blazorui\\pages\\cars\\createcar.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B1A95940-B4AD-4142-AD62-2E4CE9050161}|RentCarMS_ BlazorUI\\RentCarMS_ BlazorUI.csproj|solutionrelative:rentcarms_ blazorui\\pages\\cars\\createcar.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1A95940-B4AD-4142-AD62-2E4CE9050161}|RentCarMS_ BlazorUI\\RentCarMS_ BlazorUI.csproj|d:\\md_yousof\\quardrison\\rentcarms_ blazorui\\rentcarms_ blazorui\\pages\\cars\\listcar.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B1A95940-B4AD-4142-AD62-2E4CE9050161}|RentCarMS_ BlazorUI\\RentCarMS_ BlazorUI.csproj|solutionrelative:rentcarms_ blazorui\\pages\\cars\\listcar.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1A95940-B4AD-4142-AD62-2E4CE9050161}|RentCarMS_ BlazorUI\\RentCarMS_ BlazorUI.csproj|d:\\md_yousof\\quardrison\\rentcarms_ blazorui\\rentcarms_ blazorui\\pages\\payments\\listpayment.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B1A95940-B4AD-4142-AD62-2E4CE9050161}|RentCarMS_ BlazorUI\\RentCarMS_ BlazorUI.csproj|solutionrelative:rentcarms_ blazorui\\pages\\payments\\listpayment.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1A95940-B4AD-4142-AD62-2E4CE9050161}|RentCarMS_ BlazorUI\\RentCarMS_ BlazorUI.csproj|d:\\md_yousof\\quardrison\\rentcarms_ blazorui\\rentcarms_ blazorui\\pages\\duepayments\\listduepayment.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B1A95940-B4AD-4142-AD62-2E4CE9050161}|RentCarMS_ BlazorUI\\RentCarMS_ BlazorUI.csproj|solutionrelative:rentcarms_ blazorui\\pages\\duepayments\\listduepayment.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1A95940-B4AD-4142-AD62-2E4CE9050161}|RentCarMS_ BlazorUI\\RentCarMS_ BlazorUI.csproj|d:\\md_yousof\\quardrison\\rentcarms_ blazorui\\rentcarms_ blazorui\\pages\\rentcares\\updaterentcar.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B1A95940-B4AD-4142-AD62-2E4CE9050161}|RentCarMS_ BlazorUI\\RentCarMS_ BlazorUI.csproj|solutionrelative:rentcarms_ blazorui\\pages\\rentcares\\updaterentcar.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1A95940-B4AD-4142-AD62-2E4CE9050161}|RentCarMS_ BlazorUI\\RentCarMS_ BlazorUI.csproj|d:\\md_yousof\\quardrison\\rentcarms_ blazorui\\rentcarms_ blazorui\\pages\\rentcares\\createrentcar.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B1A95940-B4AD-4142-AD62-2E4CE9050161}|RentCarMS_ BlazorUI\\RentCarMS_ BlazorUI.csproj|solutionrelative:rentcarms_ blazorui\\pages\\rentcares\\createrentcar.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1A95940-B4AD-4142-AD62-2E4CE9050161}|RentCarMS_ BlazorUI\\RentCarMS_ BlazorUI.csproj|d:\\md_yousof\\quardrison\\rentcarms_ blazorui\\rentcarms_ blazorui\\pages\\members\\createmember.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B1A95940-B4AD-4142-AD62-2E4CE9050161}|RentCarMS_ BlazorUI\\RentCarMS_ BlazorUI.csproj|solutionrelative:rentcarms_ blazorui\\pages\\members\\createmember.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 1,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedHeight": 217,
+          "SelectedChildIndex": 6,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ListCar.razor",
+              "DocumentMoniker": "D:\\Md_Yousof\\QuardRISON\\RentCarMS_ BlazorUI\\RentCarMS_ BlazorUI\\Pages\\Cars\\ListCar.razor",
+              "RelativeDocumentMoniker": "RentCarMS_ BlazorUI\\Pages\\Cars\\ListCar.razor",
+              "ToolTip": "D:\\Md_Yousof\\QuardRISON\\RentCarMS_ BlazorUI\\RentCarMS_ BlazorUI\\Pages\\Cars\\ListCar.razor",
+              "RelativeToolTip": "RentCarMS_ BlazorUI\\Pages\\Cars\\ListCar.razor",
+              "ViewState": "AQIAAB0AAAAAAAAAAAAswD8AAAAzAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-08-28T11:41:08.653Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "UpdateRentCar.razor",
+              "DocumentMoniker": "D:\\Md_Yousof\\QuardRISON\\RentCarMS_ BlazorUI\\RentCarMS_ BlazorUI\\Pages\\RentCares\\UpdateRentCar.razor",
+              "RelativeDocumentMoniker": "RentCarMS_ BlazorUI\\Pages\\RentCares\\UpdateRentCar.razor",
+              "ToolTip": "D:\\Md_Yousof\\QuardRISON\\RentCarMS_ BlazorUI\\RentCarMS_ BlazorUI\\Pages\\RentCares\\UpdateRentCar.razor",
+              "RelativeToolTip": "RentCarMS_ BlazorUI\\Pages\\RentCares\\UpdateRentCar.razor",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAADsAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-08-28T11:11:33.427Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ListDuePayment.razor",
+              "DocumentMoniker": "D:\\Md_Yousof\\QuardRISON\\RentCarMS_ BlazorUI\\RentCarMS_ BlazorUI\\Pages\\DuePayments\\ListDuePayment.razor",
+              "RelativeDocumentMoniker": "RentCarMS_ BlazorUI\\Pages\\DuePayments\\ListDuePayment.razor",
+              "ToolTip": "D:\\Md_Yousof\\QuardRISON\\RentCarMS_ BlazorUI\\RentCarMS_ BlazorUI\\Pages\\DuePayments\\ListDuePayment.razor",
+              "RelativeToolTip": "RentCarMS_ BlazorUI\\Pages\\DuePayments\\ListDuePayment.razor",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAAEoAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-08-28T09:15:15.735Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ListPayment.razor",
+              "DocumentMoniker": "D:\\Md_Yousof\\QuardRISON\\RentCarMS_ BlazorUI\\RentCarMS_ BlazorUI\\Pages\\Payments\\ListPayment.razor",
+              "RelativeDocumentMoniker": "RentCarMS_ BlazorUI\\Pages\\Payments\\ListPayment.razor",
+              "ToolTip": "D:\\Md_Yousof\\QuardRISON\\RentCarMS_ BlazorUI\\RentCarMS_ BlazorUI\\Pages\\Payments\\ListPayment.razor",
+              "RelativeToolTip": "RentCarMS_ BlazorUI\\Pages\\Payments\\ListPayment.razor",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABgAAAALAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-08-28T07:00:47.525Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CreateCar.razor",
+              "DocumentMoniker": "D:\\Md_Yousof\\QuardRISON\\RentCarMS_ BlazorUI\\RentCarMS_ BlazorUI\\Pages\\Cars\\CreateCar.razor",
+              "RelativeDocumentMoniker": "RentCarMS_ BlazorUI\\Pages\\Cars\\CreateCar.razor",
+              "ToolTip": "D:\\Md_Yousof\\QuardRISON\\RentCarMS_ BlazorUI\\RentCarMS_ BlazorUI\\Pages\\Cars\\CreateCar.razor",
+              "RelativeToolTip": "RentCarMS_ BlazorUI\\Pages\\Cars\\CreateCar.razor",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAADQAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-08-28T09:27:18.427Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "CreateRentCar.razor",
+              "DocumentMoniker": "D:\\Md_Yousof\\QuardRISON\\RentCarMS_ BlazorUI\\RentCarMS_ BlazorUI\\Pages\\RentCares\\CreateRentCar.razor",
+              "RelativeDocumentMoniker": "RentCarMS_ BlazorUI\\Pages\\RentCares\\CreateRentCar.razor",
+              "ToolTip": "D:\\Md_Yousof\\QuardRISON\\RentCarMS_ BlazorUI\\RentCarMS_ BlazorUI\\Pages\\RentCares\\CreateRentCar.razor",
+              "RelativeToolTip": "RentCarMS_ BlazorUI\\Pages\\RentCares\\CreateRentCar.razor",
+              "ViewState": "AQIAADUAAAAAAAAAAAAAAD8AAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-08-28T09:24:34.592Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "CreateMember.razor",
+              "DocumentMoniker": "D:\\Md_Yousof\\QuardRISON\\RentCarMS_ BlazorUI\\RentCarMS_ BlazorUI\\Pages\\Members\\CreateMember.razor",
+              "RelativeDocumentMoniker": "RentCarMS_ BlazorUI\\Pages\\Members\\CreateMember.razor",
+              "ToolTip": "D:\\Md_Yousof\\QuardRISON\\RentCarMS_ BlazorUI\\RentCarMS_ BlazorUI\\Pages\\Members\\CreateMember.razor",
+              "RelativeToolTip": "RentCarMS_ BlazorUI\\Pages\\Members\\CreateMember.razor",
+              "ViewState": "AQIAADwAAAAAAAAAAAAAAFAAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-08-28T09:24:53.599Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedHeight": 200,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

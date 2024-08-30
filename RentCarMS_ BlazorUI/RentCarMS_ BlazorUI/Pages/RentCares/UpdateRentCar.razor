@@ -1,0 +1,132 @@
+﻿@page "/update-rentcar/{id}"
+@using RentCarMS__BlazorUI.Data.Models
+@using RentCarMS__BlazorUI.Services.RentCars
+@using RentCarMS__BlazorUI.Pages.RentCares
+@using RentCarMS__BlazorUI.Services.Members
+@using RentCarMS__BlazorUI.Services.Cars
+
+<div class="row">
+    <div class="col-lg-9">
+        <h2>Update RentCar</h2>
+    </div>
+    <div class="col-lg-3 tex-right">
+        <a href="/rentcar" role="button" class="btn btn-secondary btn-sm">Back to List</a>
+    </div>
+</div>
+
+<form @onsubmit="UpdateRentCars">
+    <div class="row">
+        <div class="col-5">
+            <div class="form-group">
+                <label for"memberId">MemberID:</label>
+                <select class="form-control" @bind=updaterentcar.MemberID>
+                    <option value="">Selecct Member..</option>
+                    @foreach (var member in selectMember)
+                    {
+                        <option value="@member.MemberID">@member.FastName</option>
+                    }
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for"rentCarDate">RentCar Date:</label>
+                <input type="date" class="form-control" id="rentCarDate" @bind="updaterentcar.RentCarDate" />
+            </div>
+
+            <div class="form-group">
+
+                @for (var i = 0; i < updaterentcar.RentCarDetails?.Count; i++)
+                {
+                    var index = i;
+                    var rentCarDetails = updaterentcar.RentCarDetails[i];
+                    <h5>@(i + 1): RentCar Details</h5>
+
+                    <div class="form-group">
+                        <label>Car Id</label>
+                        <select class="form-control" @bind="rentCarDetails.CarID" disabled="@IsCarIdDisabled(rentCarDetails)">
+                            <option value="">--Select Car</option>
+                            @foreach (var car in selectCar)
+                            {
+                                <option value="@car.CarID">@car.Model"</option>
+                            }
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Duration</label>
+                        <input type="number" class="form-control" @bind="rentCarDetails.Duration" />
+                    </div>
+
+                   @*  <div class="form-group">
+                        <label>Quantity</label>
+                        <input type="number" class="form-control" @bind="rentCarDetails.Quantity" />
+                    </div> *@
+
+                    <div class="form-group">
+                        <label>StartDate</label>
+                        <input type="date" class="form-control" @bind="rentCarDetails.StartDate" />
+                    </div>
+
+                    <div class="form-group">
+                        <label>MonthlyFeeInstallment</label>
+                        <input type="number" class="form-control" @bind="rentCarDetails.MonthlyFeeInstallment" />
+                    </div>
+
+                    <div class="form-group">
+                        <label>IsReturn</label>
+                        <input type="checkbox" class="form-check" @bind="rentCarDetails.IsReturn" />
+                    </div>
+
+                    <button type="button" class="btn btn-danger" @onclick="@(()=>updaterentcar.RentCarDetails.RemoveAt(index))">Remove</button>
+                }
+                <div class="form-group">
+                    <button type="button" class="btn btn-secondary" @onclick="@(()=> updaterentcar.RentCarDetails?.Add(new RentCarDetail()))">+Add RentCar Details</button>
+                </div>
+
+            </div>
+            @* <button class="btn btn-warning" @onclick="Clear">Clear</button> *@
+            <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+    </div>
+</form>
+
+
+@code {
+    [Parameter] public string id { get; set; }
+
+    public RentCar updaterentcar = new RentCar();
+    [Inject] public NavigationManager NavigationManager { get; set; }
+    [Inject] public IRentCar RentCar { get; set; }
+    [Inject]
+    public IMemberService MemberService { get; set; }
+    [Inject]
+    public ICarService CarService { get; set; }
+
+    public List<Member> selectMember = new List<Member>();
+    public List<Car> selectCar = new List<Car>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (int.TryParse(id, out int rentCarId))
+        {
+            updaterentcar = await RentCar.GetByIdAsynce(rentCarId);
+        }
+
+        selectMember = (await MemberService.GetAllAsynce()).ToList();
+        // selectCar = (await CarService.GetByCarStatuseTrue()).ToList();
+        selectCar = (await CarService.GetAllAsynce()).ToList();
+        await base.OnInitializedAsync();
+    }
+
+    private async Task UpdateRentCars()
+    {
+        await RentCar.UpdateAsync(updaterentcar);
+        NavigationManager.NavigateTo("/rentcar");
+    }
+
+
+    private bool IsCarIdDisabled(RentCarDetail rentCarID)
+    {
+        return rentCarID.CarID != null && rentCarID.CarID != 0;
+    }
+}

@@ -1,0 +1,107 @@
+is_global = true
+build_property.TargetFramework = net7.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = RentCarMS__BlazorUI
+build_property.RootNamespace = RentCarMS__BlazorUI
+build_property.ProjectDir = D:\QuadRION\Yousof_Home\RentCarMS_ BlazorUI\RentCarMS_ BlazorUI\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 7.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = D:\QuadRION\Yousof_Home\RentCarMS_ BlazorUI\RentCarMS_ BlazorUI
+build_property._RazorSourceGeneratorDebug = 
+
+[D:/QuadRION/Yousof_Home/RentCarMS_ BlazorUI/RentCarMS_ BlazorUI/App.razor]
+build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/QuadRION/Yousof_Home/RentCarMS_ BlazorUI/RentCarMS_ BlazorUI/Pages/Cars/CreateCar.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2Fyc1xDcmVhdGVDYXIucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/QuadRION/Yousof_Home/RentCarMS_ BlazorUI/RentCarMS_ BlazorUI/Pages/Cars/EditCar.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2Fyc1xFZGl0Q2FyLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/QuadRION/Yousof_Home/RentCarMS_ BlazorUI/RentCarMS_ BlazorUI/Pages/Cars/ListCar.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2Fyc1xMaXN0Q2FyLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/QuadRION/Yousof_Home/RentCarMS_ BlazorUI/RentCarMS_ BlazorUI/Pages/Counter.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291bnRlci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/QuadRION/Yousof_Home/RentCarMS_ BlazorUI/RentCarMS_ BlazorUI/Pages/DuePayments/ListDuePayment.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRHVlUGF5bWVudHNcTGlzdER1ZVBheW1lbnQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/QuadRION/Yousof_Home/RentCarMS_ BlazorUI/RentCarMS_ BlazorUI/Pages/FetchData.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmV0Y2hEYXRhLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/QuadRION/Yousof_Home/RentCarMS_ BlazorUI/RentCarMS_ BlazorUI/Pages/Index.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/QuadRION/Yousof_Home/RentCarMS_ BlazorUI/RentCarMS_ BlazorUI/Pages/Members/CreateMember.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWVtYmVyc1xDcmVhdGVNZW1iZXIucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/QuadRION/Yousof_Home/RentCarMS_ BlazorUI/RentCarMS_ BlazorUI/Pages/Members/ListMember.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWVtYmVyc1xMaXN0TWVtYmVyLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/QuadRION/Yousof_Home/RentCarMS_ BlazorUI/RentCarMS_ BlazorUI/Pages/Members/UpdateMember.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWVtYmVyc1xVcGRhdGVNZW1iZXIucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/QuadRION/Yousof_Home/RentCarMS_ BlazorUI/RentCarMS_ BlazorUI/Pages/Payments/CreatePayment.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGF5bWVudHNcQ3JlYXRlUGF5bWVudC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/QuadRION/Yousof_Home/RentCarMS_ BlazorUI/RentCarMS_ BlazorUI/Pages/Payments/ListPayment.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGF5bWVudHNcTGlzdFBheW1lbnQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/QuadRION/Yousof_Home/RentCarMS_ BlazorUI/RentCarMS_ BlazorUI/Pages/RentCares/CreateRentCar.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVudENhcmVzXENyZWF0ZVJlbnRDYXIucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/QuadRION/Yousof_Home/RentCarMS_ BlazorUI/RentCarMS_ BlazorUI/Pages/RentCares/ListRentCar.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVudENhcmVzXExpc3RSZW50Q2FyLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/QuadRION/Yousof_Home/RentCarMS_ BlazorUI/RentCarMS_ BlazorUI/Pages/RentCares/UpdateRentCar.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVudENhcmVzXFVwZGF0ZVJlbnRDYXIucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/QuadRION/Yousof_Home/RentCarMS_ BlazorUI/RentCarMS_ BlazorUI/Shared/SurveyPrompt.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFN1cnZleVByb21wdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/QuadRION/Yousof_Home/RentCarMS_ BlazorUI/RentCarMS_ BlazorUI/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/QuadRION/Yousof_Home/RentCarMS_ BlazorUI/RentCarMS_ BlazorUI/Shared/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-9mz2vb8ll7
+
+[D:/QuadRION/Yousof_Home/RentCarMS_ BlazorUI/RentCarMS_ BlazorUI/Shared/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdk1lbnUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-7qn433ig6y
+
+[D:/QuadRION/Yousof_Home/RentCarMS_ BlazorUI/RentCarMS_ BlazorUI/Pages/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/QuadRION/Yousof_Home/RentCarMS_ BlazorUI/RentCarMS_ BlazorUI/Pages/_Host.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0hvc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 

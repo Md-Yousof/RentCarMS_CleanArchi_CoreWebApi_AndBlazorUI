@@ -1,0 +1,111 @@
+﻿@page "/member"
+@using RentCarMS__BlazorUI.Services.Members;
+@using RentCarMS__BlazorUI.Data.Models;
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h4>Manage Members</h4>
+    <button @onclick="CreateMember" class="btn btn-primary"><i class="fas fa-plus"></i> Create New Member</button>
+</div>
+
+<table class="table table-hover table-striped table-bordered">
+    <thead class="thead-light">
+        <tr>
+            <th scope="col">Sl:No</th>
+          @*   <th scope="col">Member ID</th> *@
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Date of Birth</th>
+            <th scope="col">Email</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Join Date</th>
+            <th scope="col">Image</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (MemberList != null && MemberList.Any())
+        {
+            @foreach (var (item, index) in MemberList.Select((value, index) => (value, index)))
+            {
+                <tr>
+                    <td>@(index + 1)</td>
+                    @* <td>@item.MemberID</td> *@
+                    <td>@item.FastName</td>
+                    <td>@item.LastName</td>
+                    <td>@item.DOB</td>
+                    <td>@item.Email</td>
+                    <td>@item.Phone</td>
+                    <td>@item.JoinDate?.ToShortDateString()</td>
+                    <td>
+                        @if (!string.IsNullOrEmpty(item.ImagePath))
+                        {
+                            <img src="@item.ImagePath" alt="Profile Image" class="img-thumbnail" style="width: 80px; height: 80px; object-fit: cover;" />
+                            @* <img src="https://localhost:7259/uploads/@item.ImagePath" alt="Profile Image" style="width: 50px; height: 50px; object-fit: cover;" /> *@
+                        }
+                        else
+                        {
+                            <span>No Image</span>
+                        }
+                    </td>
+                    <td>
+                        <button @onclick="() => EditMember(item.MemberID)" class="btn btn-secondary btn-sm"><i class="fas fa-edit"></i> Edit</button>
+                        <button @onclick="() => DeleteMember(item.MemberID)" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Delete</button>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="10" class="text-center">No members found.</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+@code {
+    //private Member? editedCar;
+
+    [Inject]
+    private NavigationManager NavigationManager { get; set; }
+    [Inject]
+    public IMemberService MemberService { get; set; }
+
+    public IEnumerable<Member> MemberList { get; set; } = new List<Member>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        MemberList = (await MemberService.GetAllAsynce()).ToList();
+    }
+
+    public void CreateMember()
+    {
+        NavigationManager.NavigateTo("/create-member");
+    }
+
+    public async void EditMember(int id)
+    {
+        NavigationManager.NavigateTo($"/edit-member/{id}");
+
+        // try
+        // {
+        //     editedCar = await MemberService.GetByIdAsynce(id);
+
+        // }
+        // catch(Exception ex)
+        // {
+        //     Console.WriteLine($"Error loading Car: {ex.Message}");
+        // }
+    }
+
+    public async Task DeleteMember(int id)
+    {
+        var deleteCar = MemberList.FirstOrDefault(item => item.MemberID == id);
+        if (deleteCar != null)
+        {
+            await MemberService.DeleteAsynce(id);
+        }
+        await OnInitializedAsync();
+    }
+}

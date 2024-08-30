@@ -1,0 +1,72 @@
+﻿@page "/edit-car/{id}"
+@using RentCarMS__BlazorUI.Data.Models;
+@using RentCarMS__BlazorUI.Services.Cars;
+@using RentCarMS__BlazorUI.Pages.Cars;
+
+@inject ICarService CarService
+@inject NavigationManager NavigationManager
+
+<div class="row">
+    <div class="col-lg-9">
+        <h2>Edit Car</h2>
+    </div>
+    <div class="col-lg-3 text-right">
+        <a href="/car" role="button" class="btn btn-secondary btn-sm">Back to List</a>
+    </div>
+</div>
+
+<EditForm Model="editedCar" OnValidSubmit="UpdateCarAsync">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="col-5">
+        <div class="form-group">
+            <label for="licensePlate">License Plate:</label>
+            <input type="text" class="form-control" id="licensePlate" @bind="editedCar.LicensePlaete" />
+        </div>
+
+        <div class="form-group">
+            <label for="model">Model:</label>
+            <input type="text" class="form-control" id="model" @bind="editedCar.Model" />
+        </div>
+
+        <div class="form-group">
+            <label for="quantity">Quantity:</label>
+            <input type="number" class="form-control" id="quantity" @bind="editedCar.Quentity" />
+        </div>
+
+        <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" id="status" @bind="editedCar.Status" />
+            <label class="form-check-label" for="status">Status</label>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Update</button>
+    </div>
+</EditForm>
+
+
+@code {
+    private Car editedCar = new Car();
+
+    [Parameter]
+    public string id { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        if(int.TryParse(id, out int carid))
+            editedCar = await CarService.GetByIdAsynce(carid);
+    }
+
+    private async Task UpdateCarAsync()
+    {
+        try
+        {
+            await CarService.UpdateAsynce(editedCar);
+            NavigationManager.NavigateTo("/car");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error updating Car: {ex.Message}");
+        }
+    }
+}

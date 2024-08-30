@@ -1,0 +1,94 @@
+﻿
+@page "/car"
+@using RentCarMS__BlazorUI.Services.Cars;
+@using RentCarMS__BlazorUI.Data.Models;
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h3>Car List</h3>
+        <button @onclick="CreateCar" class="btn btn-primary">
+            <i class="fas fa-plus"></i> Create New Car
+        </button>
+    </div>
+
+    <table class="table table-hover table-striped table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                @* <th scope="col">Car ID</th> *@
+                <th scope="col">License Plate</th>
+                <th scope="col">Model</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Status</th>
+                <th scope="col" class="text-center">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var (item, index) in CarList.Select((value, index) => (value, index)))
+            {
+                <tr>
+                    <td>@(index + 1)</td>
+                   @*  <td>@item.CarID</td> *@
+                    <td>@item.LicensePlaete</td>
+                    <td>@item.Model</td>
+                    <td>@item.Quentity</td>
+                    <td>@item.Status</td>
+                    <td class="text-center">
+                        <button @onclick="() => EditCar(item.CarID)" class="btn btn-sm btn-warning mr-2">
+                            <i class="fas fa-edit"></i> Edit
+                        </button>
+                        <button @onclick="() => DeleteCar(item.CarID)" class="btn btn-sm btn-danger">
+                            <i class="fas fa-trash"></i> Delete
+                        </button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@code {
+    //private Car? editedCar;
+
+    [Inject]
+    private NavigationManager NavigationManager { get; set; }
+    [Inject]
+    public ICarService CarService { get; set; }
+
+    public IEnumerable<Car> CarList { get; set; } = new List<Car>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        CarList = (await CarService.GetAllAsynce()).ToList();
+    }
+
+    public void CreateCar()
+    {
+        NavigationManager.NavigateTo("/create-care");
+    }
+
+    public async void EditCar(int id)
+    {
+        NavigationManager.NavigateTo($"/edit-car/{id}");
+       
+        // try
+        // {
+        //     editedCar = await CarService.GetByIdAsynce(id);
+           
+        // }
+        // catch(Exception ex)
+        // {
+        //     Console.WriteLine($"Error loading Car: {ex.Message}");
+        // }
+    }
+
+    public async Task DeleteCar(int id)
+    {
+        var deleteCar = CarList.FirstOrDefault(item => item.CarID == id);
+        if(deleteCar != null)
+        {
+            await CarService.DeleteAsynce(id);
+        }
+        await OnInitializedAsync();
+    }
+}

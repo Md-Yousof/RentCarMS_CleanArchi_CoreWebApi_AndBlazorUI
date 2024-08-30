@@ -1,0 +1,208 @@
+﻿@page "/rentcar"
+@using RentCarMS__BlazorUI.Data.Models
+@using RentCarMS__BlazorUI.Services.Cars
+@using RentCarMS__BlazorUI.Services.Members
+@using RentCarMS__BlazorUI.Services.RentCars
+@using System.Numerics
+@using RentCarMS__BlazorUI.Services.RentCarDetails
+
+
+<div class="container my-4">
+    <div class="row mb-3">
+        <div class="col-lg-9">
+            <button @onclick="CreateRentCarNavigate" class="btn btn-primary">
+                <i class="fas fa-plus"></i> Create RentCar
+            </button>
+        </div>
+        <div class="col-lg-3 text-right">
+            <a href="/create-payment" role="button" class="btn btn-secondary btn-sm">Go to Payment</a>
+        </div>
+    </div>
+
+    <h2 class="mb-4">Rent Car List</h2>
+
+    <table class="table table-hover table-striped table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th>Sl:No</th>
+                <th>RentCarID</th>
+                <th>Member Name</th>
+                <th>RentCarDate</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var (item, index) in RentCarList.Select((value, index) => (value, index)))
+            {
+                <tr>
+                    <td>@(index + 1)</td>
+                    <td>@item.RentCarID</td>
+                    <td>@item.FastName</td>
+                    <td>@item.RentCarDate.ToShortDateString()</td>
+                    <td>
+                        <button class="btn btn-link" @onclick="() => ToggleDetailsVisibility(item.RentCarID)">
+                            Details
+                        </button>
+                        <button class="btn btn-secondary btn-sm" @onclick="() => UpdateRentCar(item.RentCarID)">
+                            <i class="fas fa-edit"></i> Edit
+                        </button>
+                        <button class="btn btn-danger btn-sm" @onclick="() => DeleteRentCar(item.RentCarID)">
+                            <i class="fas fa-trash"></i> Delete
+                        </button>
+                    </td>
+                </tr>
+                @if (item.RentCarID == selectedRentCarId)
+                {
+                    <tr>
+                        <td colspan="5">
+                            <table class="table table-sm table-bordered">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th>DetailsID</th>
+                                        <th>RentCarID</th>
+                                        <th>Model</th>
+                                        <th>Quantity</th>
+                                        <th>Duration</th>
+                                        <th>StartDate</th>
+                                        <th>EndDate</th>
+                                        <th>Installment</th>
+                                        <th>MonthlyFee</th>
+                                        <th>TotalFee</th>
+                                        <th>Status</th>
+                                        <th>IsReturn</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var details in item.RentCarDetails)
+                                    {
+                                        <tr>
+                                            <td>@details.RentCarDetailID</td>
+                                            <td>@details.RentCarID</td>
+                                            <td>@details.Model</td>
+                                            <td>@details.Quantity</td>
+                                            <td>@details.Duration</td>
+                                            <td>@details.StartDate.ToShortDateString()</td>
+                                            <td>@details.EndDate.ToShortDateString()</td>
+                                            <td>@details.NoOfInstallment</td>
+                                            <td>@details.MonthlyFeeInstallment</td>
+                                            <td>@details.TotalFee</td>
+                                            <td>@details.Status</td>
+                                            <td>@details.IsReturn</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+@code {
+    public int? selectedRentCarId;
+
+    public IEnumerable<RentCar> RentCarList { get; set; } = new List<RentCar>();
+
+    [Inject]
+    private IRentCar RentCarService { get; set; }
+    [Inject]
+    private NavigationManager NavigationManager { get; set; }
+    [Inject]
+    public ICarService CarService { get; set; }
+    public List<Car> selectCar = new List<Car>();
+    public Member member = new Member();
+    [Inject] 
+    private IMemberService MemberService { get; set; }
+    protected override async Task OnInitializedAsync()
+    {
+        //RentCarList = (await RentCarService.GetAllAsynce()).ToList();
+
+        RentCarList = (await RentCarService.GetAllRentCarsWithUpdatedInstallmentsAsync()).ToList();
+        selectCar = (await CarService.GetAllAsynce()).ToList();
+
+        await GetCarModelName();
+        await GetMemberName();
+
+    }
+
+    private async Task GetMemberName()
+    {
+        foreach(var rencar in RentCarList)
+        {
+            var mem = await MemberService.GetByIdAsynce(rencar.MemberID);
+            if(mem != null)
+            {
+                rencar.FastName = mem.FastName;
+            }
+        }
+    }
+
+    private async Task GetCarModelName()
+    {
+        foreach (var item in RentCarList)  //this is for floorName show in Shelf List
+        {
+            foreach(var details in item.RentCarDetails)
+            {              
+                var car = await CarService.GetByIdAsynce(details.CarID);
+                if (car != null)
+                {
+                    details.Model = car.Model;
+                }        
+            }
+
+        }
+
+    }
+
+    public void CreateRentCarNavigate()
+    {
+        NavigationManager.NavigateTo("/create-rentcar");
+    }
+
+    public void UpdateRentCar(int id)
+    {
+        NavigationManager.NavigateTo($"/update-rentcar/{id}");
+    }
+
+    public async Task DeleteRentCar(int id)
+    {
+        var rent = RentCarList.FirstOrDefault(r => r.RentCarID == id);
+        if (rent !=null)
+        {
+            await RentCarService.DeleteAsynce(id);
+
+        }
+        await OnInitializedAsync();
+    }
+
+
+    private void ToggleDetailsVisibility(int rentCarId)
+    {
+        if (selectedRentCarId == rentCarId)
+        {
+            selectedRentCarId = null; // Collapse the details if already selected
+        }
+        else
+        {
+            selectedRentCarId = rentCarId;
+        }
+    }
+
+
+    [Inject]
+    public IRenCareDetailService RenCareDetailService { get; set; }
+
+    public List<RentCarDetail> listRentCarDetailaStatus = new List<RentCarDetail>();
+
+
+
+    public async Task UpdateStatus(int id)
+    {
+        NavigationManager.NavigateTo($"/update-rentcar/{id}");
+    }
+  
+
+}
+
+

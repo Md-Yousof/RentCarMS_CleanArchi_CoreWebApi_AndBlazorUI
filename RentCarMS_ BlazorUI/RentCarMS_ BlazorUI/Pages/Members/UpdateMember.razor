@@ -1,0 +1,116 @@
+﻿@page "/edit-member/{id}"
+@using RentCarMS__BlazorUI.Data.Models
+@using RentCarMS__BlazorUI.Services.Members
+@inject IMemberService MemberService
+@inject NavigationManager NavigationManager
+
+<div class="row">
+    <div class="col-lg-9">
+        <h3>Update Member</h3>
+    </div>
+    <div class="col-lg-3" tex-right>
+        <a href="/member" role="button" class="btn btn-secondary btn-sm">Back to List</a>
+    </div>
+</div>
+
+<EditForm Model="editMember" OnValidSubmit="HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <div class="col-5">
+        <div class="form-group">
+            <label for="firstName">First Name</label>
+            <InputText id="firstName" class="form-control" @bind-Value="editMember.FastName" />
+        </div>
+
+        <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <InputText id="lastName" class="form-control" @bind-Value="editMember.LastName" />
+        </div>
+
+        <div class="form-group">
+            <label for="dob">Date of Birth</label>
+            <InputDate id="dob" class="form-control" @bind-Value="editMember.DOB" />
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email</label>
+            <InputText id="email" class="form-control" @bind-Value="editMember.Email" />
+        </div>
+
+        <div class="form-group">
+            <label for="phone">Phone</label>
+            <InputText id="phone" class="form-control" @bind-Value="editMember.Phone" />
+        </div>
+
+        <div class="form-group">
+            <label for="joinDate">Join Date</label>
+            <InputDate id="joinDate" class="form-control" @bind-Value="editMember.JoinDate" />
+        </div>
+
+        <div class="form-group">
+            <label for="imagePath">Member Photo:</label>
+            <InputFile class="form-control-file" id="imagePath" OnChange="HandleFileSelected" />
+            @if (!string.IsNullOrEmpty(previewImageUrl))
+            {
+                <img src="@previewImageUrl" alt="Member Image" style="width: 100px; height: 100px; object-fit: cover;" />
+            }
+
+            @* @if (!string.IsNullOrEmpty(previewImageUrl))
+            {
+                <div>
+                    <label>Current Photo:</label>
+                    <img src="@previewImageUrl" alt="Current Member Image" style="width: 100px; height: 100px; object-fit: cover;" />
+                </div>
+            } *@
+        </div>
+
+        <button type="submit" class="btn btn-primary">Save</button>
+    </div>
+</EditForm>
+
+@code {
+    [Parameter]
+    public string id { get; set; }
+
+    private Member editMember = new();
+    private string? previewImageUrl;
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (int.TryParse(id, out int memberId))
+        {
+            editMember = await MemberService.GetByIdAsynce(memberId);
+            // Set the preview image URL if it exists
+            if (!string.IsNullOrEmpty(editMember.ImagePath))
+            {
+                previewImageUrl = $"{editMember.ImagePath}";
+            }
+        }
+        
+    }
+
+    private async Task HandleValidSubmit()
+    {
+        await MemberService.UpdateAsync(editMember);
+        NavigationManager.NavigateTo("/member");
+    }
+
+    private async void HandleFileSelected(InputFileChangeEventArgs e)
+    {
+        var file = e.File;
+        if (file != null)
+        {
+            editMember.ImageFile = file;
+
+            // Generate a preview URL
+            using (var stream = file.OpenReadStream())
+            {
+                var buffer = new byte[file.Size];
+                await stream.ReadAsync(buffer);
+                var base64String = Convert.ToBase64String(buffer);
+
+                previewImageUrl = $"data:{file.ContentType};base64,{base64String}";
+            } 
+        }
+    }
+}
