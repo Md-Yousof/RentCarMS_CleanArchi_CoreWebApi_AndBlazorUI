@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "dMv27v+LQVJ4qcBoiy6QpEt3T2pcx2IF7sg7vvjk3qGStoWdcEq+6jQkx2THySelgbw1cGG18Tup972NEyT2kw==",
+  "success": true,
+  "projectFilePath": "D:\\QuadRION\\Yousof_Home\\RentCarManagementSystem_CleanArchitecture\\RentCarMS_CleanArchitecture.Application\\RentCarMS_CleanArchitecture.Application.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Yousuf\\.nuget\\packages\\mediatr\\12.4.0\\mediatr.12.4.0.nupkg.sha512",
+    "C:\\Users\\Yousuf\\.nuget\\packages\\mediatr.contracts\\2.0.1\\mediatr.contracts.2.0.1.nupkg.sha512",
+    "C:\\Users\\Yousuf\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.0\\microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

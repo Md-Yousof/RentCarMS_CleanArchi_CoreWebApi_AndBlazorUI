@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\RentCarMS_CleanArchitecture.API.props" />
+</Project>
